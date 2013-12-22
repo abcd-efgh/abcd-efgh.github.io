@@ -114,9 +114,9 @@ var App = {
                         comp;
                 
                 ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
-				var dataURL = video.toDataURL("image/png");
-				dataURL = image.replace('data:image/png;base64,', '');
 				
+				var image = video.toDataURL("image/png").replace("image/png", "image/octet-stream");
+				window.location.href = image;
 				
                 backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
                 
