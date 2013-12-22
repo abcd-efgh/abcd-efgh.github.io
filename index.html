@@ -36,7 +36,8 @@ body {
         <body>
                 <p id="info">Please allow access to your camera!</p>
                 <canvas id="output"></canvas>
-                <script type="text/javascript" src="jquery-1.8.3.js"></script>
+                <script src="ccv.js"></script>
+                <script src="face.js"></script>
                 <script>
 
 // requestAnimationFrame shim
@@ -114,16 +115,6 @@ var App = {
                         comp;
                 
                 ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
-				var dataURL = video.toDataURL("image/png");
-				dataURL = image.replace('data:image/png;base64,', '');
-				
-				$.ajax({
-                    type: "POST",
-					url: "text_processing.py",
-					data: '{ "imageData" : "' + dataURL + '" }',
-				}).done(function( respond ) {
-                    alert(respond);
-				});
                 
                 backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
                 
